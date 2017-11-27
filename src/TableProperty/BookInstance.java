@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TableProperty;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  * Class có nhiệm vụ chính là lưu dữ liệu của một đầu sách để lưu vào bảng.
- * @author khangnlbk
+ * @author anonymous588
  */
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class BookInstance {
-    private final StringProperty book_id = new SimpleStringProperty();
+	private final StringProperty book_id = new SimpleStringProperty();
 	public StringProperty book_id_property() {
         return book_id;
     }

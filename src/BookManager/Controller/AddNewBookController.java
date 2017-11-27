@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
+
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,22 +43,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+
 /**
- * FXML Controller class
+ * Controller cho Boundary AddNewBook. 
+ * @author anonymous588
  *
- * @author khangnlbk
  */
 public class AddNewBookController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-    
-    @FXML private TextField author, price, isbn, publisher, booktitle;
+	@FXML private TextField author, price, isbn, publisher, booktitle;
 	@FXML private Button submitButton;
 	@FXML private Label bookNumber;
 	@FXML private Label window_label;
@@ -286,4 +275,5 @@ public class AddNewBookController implements Initializable {
 
 		alert.showAndWait();
 	}
+
 }

@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager;
+
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,15 +9,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import BookManager.Controller.SearchAdvanceController.SearchFilter;
-import librarysystem.DBConnect;
+import Main.DBConnect;
+
 
 /**
- *  enity books
- * 
- * @author khangnlbk
+ * Enity Của Book. Truy xuất dữ liệu.
+ * @author anonymous588
+ *
  */
 public class Book {
-    private String getAllBook = "select * from book";
+	private String getAllBook = "select * from book";
 	private String getBookByID = "select * from book where book_id=?";
 	private String getBookByTitle = "select * from book where title LIKE ?";
 	private String getBookByAuthor = "select * from book where author LIKE ?";
@@ -153,4 +151,17 @@ public class Book {
 		ps.setString(1, Integer.toString(bookID));
 		return ps.executeQuery();
 	}
+
+
+	
+	
+//	public static void main(String[] args) {
+//		try {
+//			System.out.println(Book.getInstance().getBookCountInCategory("2"));
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
 }

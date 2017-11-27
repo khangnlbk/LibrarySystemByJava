@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
 
 import java.net.URL;
@@ -17,20 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 /**
- * FXML Controller class
+ * 
+ * @author anonymous588
  *
- * @author khangnlbk
  */
 public class DisplayController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    } 
-    @FXML
+	@FXML
 	public Label lblTitle, lblPublisher, lblDesc, lblAuthor, lblCategory, lblStatus, lblContent;
 
 	private BookManagerController _bc = BookManagerController.getInstance();
@@ -53,5 +40,4 @@ public class DisplayController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-    
 }

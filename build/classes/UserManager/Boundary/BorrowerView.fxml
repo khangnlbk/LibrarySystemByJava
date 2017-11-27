@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Controller.BorrowerViewController">
+   <top>
+      <HBox>
+         <children>
+            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="649.0" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="User">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="User Profile" />
+                        <MenuItem mnemonicParsing="false" text="History" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Borrow Card">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#showCardInformation" text="Card Information" />
+                        <MenuItem mnemonicParsing="false" onAction="#showActivateCard" text="Activate Card" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Other">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" text="Help" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="304.0">
+               <children>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#showBrowseBookPane" prefHeight="25.0" prefWidth="64.0" text="Home" />
+                  <Button mnemonicParsing="false" onAction="#showRegistrationPane" prefHeight="25.0" prefWidth="86.0" text="Registration" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="76.0" text="Logout" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

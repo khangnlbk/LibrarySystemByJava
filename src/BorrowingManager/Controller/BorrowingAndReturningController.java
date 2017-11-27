@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BorrowingManager.Controller;
 
 import java.sql.Connection;
@@ -17,12 +12,14 @@ import java.util.Date;
 import Main.DBConnect;
 import TableProperty.BookInstance;
 import javafx.collections.ObservableList;
+
 /**
  * Mediator của package BorrowingManager. Quản lý quan hệ giữa các class enity và boundary.
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class BorrowingAndReturningController {
-    private static BorrowingAndReturningController instance = null;
+	private static BorrowingAndReturningController instance = null;
 	private Connection conn;
 	private BorrowingAndReturningController() throws ClassNotFoundException, SQLException {
 		conn = DBConnect.getConnection();
@@ -100,4 +97,5 @@ public class BorrowingAndReturningController {
 	public boolean sendRegistration(ObservableList<BookInstance> setBook) {
 		return false;
 	}
+	
 }

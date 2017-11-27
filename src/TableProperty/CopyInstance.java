@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TableProperty;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 /**
- *
- * @author khangnlbk
+ * @author anonymous588
  */
 public class CopyInstance {
-    private final StringProperty book_id = new SimpleStringProperty();
+	private final StringProperty book_id = new SimpleStringProperty();
 	public StringProperty book_id_property() {
         return book_id;
     }

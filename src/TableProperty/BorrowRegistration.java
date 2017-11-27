@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TableProperty;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 /**
- *
- * @author khangnlbk
+ * @author anonymous588
  */
 public class BorrowRegistration {
-    public StringProperty registration_id_property() {
+	private final StringProperty registration_id = new SimpleStringProperty();
+	public StringProperty registration_id_property() {
         return registration_id;
     }
     public final String getRegistration_id() {

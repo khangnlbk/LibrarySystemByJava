@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Controller.LibrarianViewController">
+	<top>
+		<HBox alignment="CENTER" prefHeight="19.0" prefWidth="779.0" BorderPane.alignment="CENTER">
+			<children>
+            <HBox prefHeight="25.0" prefWidth="1212.0">
+               <children>
+      				<MenuBar prefHeight="25.0" prefWidth="642.0">
+      					<menus>
+      						<Menu mnemonicParsing="false" text="Add New">
+      							<items>
+      								<MenuItem mnemonicParsing="false" onAction="#showAddNewBook" text="Add New Book" />
+      								<MenuItem mnemonicParsing="false" onAction="#showAddNewCopy" text="Add New Copy" />
+      							</items>
+      						</Menu>
+      						<Menu mnemonicParsing="false" text="Borrowing Management">
+      							<items>
+      								<MenuItem mnemonicParsing="false" onAction="#showRegistrationPane" text="Borrowing Registration" />
+      							</items>
+      						</Menu>
+      						<Menu mnemonicParsing="false" text="Search Advance">
+      							<items>
+      								<MenuItem mnemonicParsing="false" onAction="#SearchAdvance_Click" text="Search Advance" />
+      							</items>
+      						</Menu>
+      					</menus>
+      				</MenuBar>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="747.0">
+               <children>
+      				<Button fx:id="homeButton" mnemonicParsing="false" onAction="#showLibrarianView" prefHeight="25.0" prefWidth="77.0" text="Home">
+      					<HBox.margin>
+      						<Insets left="1.0" right="1.0" />
+      					</HBox.margin>
+      				</Button>
+      				<Button fx:id="logout" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="88.0" text="Logout">
+      					<HBox.margin>
+      						<Insets left="1.0" right="1.0" />
+      					</HBox.margin>
+      				</Button>
+               </children>
+            </HBox>
+			</children>
+		</HBox>
+	</top>
+</BorderPane>

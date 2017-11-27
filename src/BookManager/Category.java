@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager;
 
 import java.sql.Connection;
@@ -11,13 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import librarysystem.DBConnect;
+import Main.DBConnect;
+
 /**
+ * Enity của Category. Truy xuất dữ liệu.
+ * @author anonymous588
  *
- * @author khangnlbk
  */
 public class Category {
-    private static Category instance = null;
+	private static Category instance = null;
 	
 	private Category() {}
 	
@@ -57,4 +54,5 @@ public class Category {
 		ps = conn.prepareStatement(query);
 		return ps.executeQuery();
 	}
+	
 }

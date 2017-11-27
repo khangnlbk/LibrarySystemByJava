@@ -1,20 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import librarysystem.DBConnect;
+import Main.DBConnect;
+
+
 /**
  * Enity của CategoryBook, là bảng trung gian giữa category và book. Truy xuất dữ liệu.
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class CategoryBook {
-    Connection conn = DBConnect.getConnection();
+	Connection conn = DBConnect.getConnection();
 	PreparedStatement ps;
 	
 	public CategoryBook() {	}

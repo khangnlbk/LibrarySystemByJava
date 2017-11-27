@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
 
 import java.sql.ResultSet;
@@ -16,13 +11,14 @@ import BookManager.Controller.SearchAdvanceController.SearchFilter;
 import TableProperty.BookInstance;
 import TableProperty.CopyInstance;
 
-
 /**
  * Mediator của package BookManager. Truy xuất dữ liệu của Book, Copy, BookCategory, ...
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class BookManagerController {
-    private static BookManagerController instance = null;
+	
+	private static BookManagerController instance = null;
 	private BookManagerController() {}
 	public static BookManagerController getInstance() {
 		if(instance == null) {
@@ -219,4 +215,5 @@ public class BookManagerController {
 			e.printStackTrace();
 		}
 	}
+	
 }

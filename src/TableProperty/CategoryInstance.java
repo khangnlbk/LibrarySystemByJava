@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TableProperty;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 /**
- *
- * @author khangnlbk
+ * @author anonymous588
  */
 public class CategoryInstance {
-    private final StringProperty category_id = new SimpleStringProperty();
+	private final StringProperty category_id = new SimpleStringProperty();
 	public StringProperty category_id_property() {
         return category_id;
     }

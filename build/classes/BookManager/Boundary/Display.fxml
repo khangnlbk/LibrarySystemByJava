@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="600.0" prefWidth="800.0" type="AnchorPane"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="BookManager.Controller.DisplayController">
+	<children>
+		<Pane layoutX="6.0" layoutY="102.0" prefHeight="175.0" prefWidth="747.0">
+			<children>
+				<HBox>
+					<children>
+						<GridPane depthTest="DISABLE" hgap="5.0" prefWidth="747.0">
+							<columnConstraints>
+								<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+									minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+									prefWidth="100.0" />
+								<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES"
+									minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+									prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0"
+									vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0"
+									vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0"
+									vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<Label text="Nhà sản xuất:" GridPane.rowIndex="1">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+								<Label text="Loại sách:" GridPane.columnIndex="2"
+									GridPane.rowIndex="1">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+								<Label text="Tác giả:" GridPane.columnIndex="2">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+								<Label text="Tên sách:">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+								<Label text="Tình trạng sách:" GridPane.rowIndex="2">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+								<Label text="Trạng thái:" GridPane.columnIndex="2"
+									GridPane.rowIndex="2">
+									<font>
+										<Font name="System Bold" size="12.0" />
+									</font>
+								</Label>
+
+								<Label fx:id="lblTitle" GridPane.columnIndex="1" />
+								<Label fx:id="lblPublisher" GridPane.columnIndex="1"
+									GridPane.rowIndex="1" />
+								<Label fx:id="lblDesc" GridPane.columnIndex="1"
+									GridPane.rowIndex="2" />
+								<Label fx:id="lblAuthor" GridPane.columnIndex="3" />
+								<Label fx:id="lblCategory" GridPane.columnIndex="3"
+									GridPane.rowIndex="1" />
+								<Label fx:id="lblStatus" GridPane.columnIndex="3"
+									GridPane.rowIndex="2" />
+							</children>
+						</GridPane>
+					</children>
+				</HBox>
+				<GridPane hgap="5.0" layoutY="90.0" prefHeight="30.0"
+					prefWidth="808.0">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0"
+							minWidth="10.0" prefWidth="181.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="629.0"
+							minWidth="10.0" prefWidth="622.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Label contentDisplay="RIGHT" text="Mô tả:" textAlignment="RIGHT"
+							GridPane.halignment="RIGHT">
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</Label>
+						<Label fx:id="lblContent" GridPane.columnIndex="1" />
+					</children>
+				</GridPane>
+			</children>
+		</Pane>
+		<Label layoutX="31.0" layoutY="62.0" text="Thông tin chi tiết sách">
+			<font>
+				<Font name="System Bold" size="15.0" />
+			</font>
+		</Label>
+	</children>
+</fx:root>

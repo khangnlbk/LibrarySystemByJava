@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BorrowingManager.Controller;
 
 import java.sql.Connection;
@@ -12,13 +7,17 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import librarysystem.DBConnect;
+import Main.DBConnect;
+
+
+
 /**
  * Enity của BorrowCard. Truy xuất dữ liệu.
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class BorrowCard {
-    private Connection conn = DBConnect.getConnection();
+	private Connection conn = DBConnect.getConnection();
 	private PreparedStatement ps;
 	
 	private String getBorrowCard = "select * from borrowcard where user_id=?";
@@ -54,4 +53,5 @@ public class BorrowCard {
 		ps.executeUpdate();
 		
 	}
+	
 }

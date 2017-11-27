@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
 
 import java.io.IOException;
@@ -29,20 +24,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 /**
- * FXML Controller class
+ * 
+ * @author anonymous588
  *
- * @author khangnlbk
  */
-public class SearchAdvanceController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-    @FXML
+public class SearchAdvanceController implements Initializable {
+	@FXML
 	private TextField txtBookName, txtAuthor, txtPublishCom;
 	@SuppressWarnings("rawtypes")
 	@FXML
@@ -119,5 +107,5 @@ public class SearchAdvanceController implements Initializable {
 		}
 		tbvLstBook.setItems(row);
 	}
-    
+
 }

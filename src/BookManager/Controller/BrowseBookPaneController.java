@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
 
 import javafx.collections.FXCollections;
@@ -39,21 +34,13 @@ import TableProperty.UserInstance;
 import UserManager.Controller.BorrowerController;
 import UserManager.Controller.LibrarianViewController;
 import UserManager.Controller.LoginController;
-/**
- * FXML Controller class
- *
- * @author khangnlbk
- */
-public class BrowseBookPaneController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-    @FXML private TableView<BookInstance> browseBookTable;
+/**
+ * Controller cho Boundary BrowseBook. Điều khiển các hành vi trong màn hình duyệt sách tùy theo Role của User.
+ * @author anonymous588
+ */
+public class BrowseBookPaneController implements Initializable{
+	@FXML private TableView<BookInstance> browseBookTable;
 	@FXML private TableColumn bookidCol;
 	@FXML private TableColumn authorCol;
 	@FXML private TableColumn isbnCol;
@@ -254,5 +241,5 @@ public class BrowseBookPaneController implements Initializable {
 		browseBookTable.setItems(rows);
 	}
 	
-    
 }
+

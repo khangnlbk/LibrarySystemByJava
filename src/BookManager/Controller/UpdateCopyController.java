@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager.Controller;
 
 import java.io.IOException;
@@ -20,21 +15,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+
 /**
- * FXML Controller class
  * Controller của boundary Update Copy. Hiển thị các thông tin ban đầu của Copy đó và xác nhận sự thay đổi trong các trường dữ liệu của Copy.
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class UpdateCopyController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-    @FXML private TextField copy_condition;
+	@FXML private TextField copy_condition;
 	@FXML private Label copy_number;
 	@FXML private TextField price;
 	@FXML private ComboBox copy_type;
@@ -114,5 +103,5 @@ public class UpdateCopyController implements Initializable {
 		LibrarianViewController lb = new LibrarianViewController();
 		lb.showLibrarianView();
 	}
-    
+	
 }

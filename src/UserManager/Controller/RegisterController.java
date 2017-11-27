@@ -1,8 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// LoginController quản lý đăng nhập người dùng.
+// LoginController lấy thông tin trực tiếp từ database.
+// Role:  1 = librarian, 2 = borrower
+
 package UserManager.Controller;
 
 import java.io.IOException;
@@ -11,9 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import librarysystem.AlertPane;
-import librarysystem.DBConnect;
+import Main.AlertPane;
+import Main.DBConnect;
 import TableProperty.UserInstance;
+import static UserManager.Controller.LoginController.mainLayout;
+import static UserManager.Controller.LoginController.primaryStage;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,24 +22,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 /**
- * FXML Controller class
- * LoginController quản lý đăng nhập người dùng.
- * LoginController lấy thông tin trực tiếp từ database.
- * Role: 0 = admin, 1 = librarian, 2 = borrower
- * @author khangnlbk
+ * LoginController quản lý đăng nhập người dùng, kiểm tra đối chiếu username và password với DB
+ * 
+ * @author anonymous588
+ *
  */
-public class RegisterController implements Initializable {
+public class RegisterController extends Application{
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }   
-    public static Stage primaryStage;
+	public static Stage primaryStage;
 	public static BorderPane mainLayout;
 	private Connection conn = DBConnect.getConnection();
 	private PreparedStatement ps;
@@ -111,9 +103,6 @@ public class RegisterController implements Initializable {
 						rs.getString(11)
 						);
 				int role = Integer.parseInt(rs.getString(rs.findColumn("role")));
-				if(role == 0) {
-					//show admin pane
-				}
 				if(role == 1) {
 					LibrarianViewController librarianView = new LibrarianViewController();				
 					librarianView.start(primaryStage);
@@ -130,6 +119,16 @@ public class RegisterController implements Initializable {
 		}
 	}	
 
+        public void showLoginPane() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/UserManager/Boundary/Login.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+        
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
@@ -137,5 +136,6 @@ public class RegisterController implements Initializable {
 		this.primaryStage.setTitle("Librarian");
 		showLoginPane();
 	}
-    
+        
+        
 }

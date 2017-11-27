@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserManager.Controller;
 
 import java.io.IOException;
@@ -14,12 +9,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+
 /**
  * Class này là Controller của giao diện ActivateCard (Javafx)
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class ActivateCardController {
-    @FXML private TextField activateCode;
+	@FXML private TextField activateCode;
 
 	BorrowerController bc = BorrowerController.getInstance();
 	
@@ -55,4 +52,10 @@ public class ActivateCardController {
 			}
 		}
 	}
+	
 }
+
+
+//c8d8144b245b092e910c9ff0686a2def leekien
+//f798532af0b7ff84bf0766f07d17f257 thuyninh
+//e10e2e1ded77e1aca515aa4daadf0d56 dxmanh

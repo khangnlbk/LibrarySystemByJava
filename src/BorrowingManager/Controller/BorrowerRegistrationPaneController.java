@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// hàm này là controller cho màn hình hiển thị registration hiện tại của borrower. (trigged bằng cách ấn vào nút registration trên giao diện của borrower)
+
 package BorrowingManager.Controller;
+
+
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import BookManager.Controller.BookManagerController;
-import librarysystem.AlertPane;
+import Main.AlertPane;
 import TableProperty.BookInstance;
 import TableProperty.UserInstance;
 import UserManager.Controller.BorrowerController;
@@ -25,22 +24,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
 /**
- * FXML Controller class
- * hàm này là controller cho màn hình hiển thị registration hiện tại của borrower. (trigged bằng cách ấn vào nút registration trên giao diện của borrower)
- * @author khangnlbk
+ * Controller của boudary BorrowerRegistrationPane, là màn hình hiển thị danh sách các sách người dùng đang yêu cầu mượn.
+ * Xác nhận hoạt động đặt mượn bằng nút Confirm.
+ * @author anonymous588
+ *
  */
 public class BorrowerRegistrationPaneController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    } 
-    @FXML private TableView<BookInstance> bookTable;
+	@FXML private TableView<BookInstance> bookTable;
 	@FXML private TableColumn bookidCol;
 	@FXML private TableColumn authorCol;
 	@FXML private TableColumn isbnCol;
@@ -100,5 +91,5 @@ public class BorrowerRegistrationPaneController implements Initializable {
 		}
 	}
 	
-    
+	
 }

@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//
+
 package BorrowingManager.Controller;
 
 import java.sql.Connection;
@@ -13,19 +10,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import BookManager.Controller.BookManagerController;
-import librarysystem.DBConnect;
+import Main.DBConnect;
 import TableProperty.BookInstance;
 import UserManager.Controller.BorrowerController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
 /**
  * Enity của bảng borrowregistration và borrowingregistrationitem, lưu dữ liệu và truy xuất
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class BorrowerRegistration {
-    private static BorrowerRegistration instance = null;
+	//singleton
+	//book instances;
+	private static BorrowerRegistration instance = null;
 	private BorrowerRegistration() {}
 	public static BorrowerRegistration getInstance() {
 		if(instance == null) {
@@ -132,6 +133,8 @@ public class BorrowerRegistration {
 			ps.setString(4, borrow_date);
 			ps.setString(5, "0");
 			ps.executeUpdate();
-		}	
+		}
+		//
+		
 	}
 }

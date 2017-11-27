@@ -1,29 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// 
+
+// LoginController 
+// Role: 0 = admin, 1 = librarian, 2 = borrower
+
 package UserManager.Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import Main.AlertPane;
+import Main.DBConnect;
+import TableProperty.UserInstance;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+
 
 /**
- * FXML Controller class
+ * LoginController quản lý đăng nhập người dùng, kiểm tra đối chiếu username và password với DB
+ * 
+ * @author anonymous588
  *
- * @author khangnlbk
  */
-public class LoginController implements Initializable {
+public class LoginController extends Application{
 
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }
-    public static Stage primaryStage;
+	public static Stage primaryStage;
 	public static BorderPane mainLayout;
 	private Connection conn = DBConnect.getConnection();
 	private PreparedStatement ps;
@@ -108,6 +117,5 @@ public class LoginController implements Initializable {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Librarian");
 		showLoginPane();
-	}    
-    
+	}
 }

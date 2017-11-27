@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UserManager.Controller;
 
 import java.io.IOException;
@@ -11,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import librarysystem.AlertPane;
+import Main.AlertPane;
 import TableProperty.UserInstance;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -25,22 +21,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- * Class này là controller của giao diện borrower.
- * @author khangnlbk
- */
-public class BorrowerViewController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-//    
-    @FXML private Button logoutButton;
+/**
+ * @author anonymous588
+ * Class này là controller của giao diện borrower. 
+ */
+public class BorrowerViewController extends Application implements Initializable{
+	@FXML private Button logoutButton;
 	
 	public static Stage primaryStage;
 	public static BorderPane mainLayout;
@@ -144,4 +131,5 @@ public class BorrowerViewController implements Initializable {
 //		System.out.println(user.getUsername() + "," + user.getPassword());
 		showBorrowerView();
 	}
-}
+	
+}	

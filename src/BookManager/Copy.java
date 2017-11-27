@@ -1,21 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BookManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import librarysystem.DBConnect;
+import Main.DBConnect;
+
 /**
+ * Enity của Copy. Truy xuất dữ liệu.
+ * @author anonymous588
  *
- * @author khangnlbk
  */
 public class Copy {
-    public Copy() {}
+	
+	public Copy() {}
 	
 	public Connection conn = DBConnect.getConnection();
 	public PreparedStatement ps;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserManager.Controller;
 
 import java.io.IOException;
@@ -14,7 +9,7 @@ import java.util.ResourceBundle;
 import BookManager.Controller.BookManagerController;
 import BookManager.Controller.BrowseBookPaneController;
 import BorrowingManager.Controller.LibrarianBorrowingRegistrationPaneController;
-import librarysystem.LibrarySystem;
+import Main.Main;
 import TableProperty.UserInstance;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -31,22 +26,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- * Class này là Controller của giao diện Librarian. Bao gồm 1 menu và 1 bảng hiện thị tất cả các đầu sách.
- * @author khangnlbk
- */
-public class LibrarianViewController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-//        // TODO
-//    }    
-    public class LibrarianViewController extends Application implements Initializable{
-	@FXML private TextField searchBook; 
+
+/**
+ * Class này là Controller của giao diện Librarian. Bao gồm 1 menu và 1 bảng hiện thị tất cả các đầu sách.
+ * @author aanonymous588
+ *
+ */
+public class LibrarianViewController extends Application implements Initializable{
+	@FXML
+	private TextField searchBook; 
 	@FXML private Button logout;
 	@FXML private ComboBox searchOption;
 	@FXML private Button homeButton; 
@@ -186,4 +175,5 @@ public class LibrarianViewController implements Initializable {
 //		System.out.println(user.getUsername() + "," + user.getPassword());
 		showLibrarianView();
 	}
+	
 }

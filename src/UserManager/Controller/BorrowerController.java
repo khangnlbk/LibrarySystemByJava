@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserManager.Controller;
 
 import java.sql.Connection;
@@ -13,12 +8,14 @@ import java.sql.SQLException;
 import BorrowingManager.Controller.BorrowCard;
 import Main.DBConnect;
 import TableProperty.UserInstance;
+
 /**
  * Class này chứa toàn bộ thông tin của user, có nhiệm vụ truy xuất dữ liệu liên quan đến user.
- * @author khangnlbk
+ * @author anonymous588
+ *
  */
 public class BorrowerController {
-    //singleton
+	//singleton
 	private static BorrowerController instance = null;
 	private BorrowerController() {}
 	public static BorrowerController getInstance() {
@@ -146,4 +143,7 @@ public class BorrowerController {
 		}
 		return false;
 	}
+	
+	
+
 }
