@@ -1,140 +1,88 @@
-//
-
 package BorrowingManager.Controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import BorrowingManager.Entity.BorrowRegistrationManager;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-import BookManager.Controller.BookManagerController;
-import Main.DBConnect;
-import TableProperty.BookInstance;
+import BookManager.Entity.CopyManager;
+import BookManager.Entity.Book;
+import BorrowingManager.Boundary.HistoryView;
+import Helper.ViewAbstract;
 import UserManager.Controller.BorrowerController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 /**
- * Enity của bảng borrowregistration và borrowingregistrationitem, lưu dữ liệu và truy xuất
+ * Controller của bảng borrowregistration và borrowingregistrationitem, lưu dữ liệu và truy xuất
  * @author anonymous588
  *
  */
 public class BorrowerRegistration {
-	//singleton
-	//book instances;
-	private static BorrowerRegistration instance = null;
-	private BorrowerRegistration() {}
-	public static BorrowerRegistration getInstance() {
-		if(instance == null) {
-			instance = new BorrowerRegistration();
-		}
-		return instance;
-	}
-	//
+
+    private static BorrowerRegistration instance = null;
+    private BorrowerRegistration() {}
+    private BorrowerController currentUser = BorrowerController.getInstance();
+
+    public static BorrowerRegistration getInstance() {
+        if(instance == null) {
+                instance = new BorrowerRegistration();
+        }
+        return instance;
+    }
 	
-	private Connection conn = DBConnect.getConnection();
-	PreparedStatement ps;
+    private ObservableList<Book> registration = FXCollections.observableArrayList();
+    private BorrowRegistrationManager borrowRegistrationManager = new BorrowRegistrationManager();
+
+    /**
+     * Lay toan bo yeu cau
+     * @return List sach yeu cau duoi dang observableList
+     */
+    public ObservableList<Book> getRegistration() {
+            return registration;
+    }
 	
-	ObservableList<BookInstance> registration = FXCollections.observableArrayList();
-	
-	public boolean addRegistration(BookInstance b) {
-		int unreturned = 0;
-		try {
-			unreturned = BorrowerController.getInstance().getUnReturnBook();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(registration.size() > 5-unreturned) {
-			alertError("Out Of Max Number \n You are having " +unreturned+ " unreturned book");
-			return false;
-		}
-		for(int i = 0; i< registration.size(); i++) {
-			if(registration.get(i).getBook_id().equals(b.getBook_id())) {
-				alertError("Duplicate Book");
-				return false;
-			}
-		}
-		registration.add(b);
-		return true;
-	}
-	
-	public void clearRegistration() {
-		registration.clear();
-	}
-	
-	public ObservableList<BookInstance> getRegistration() {
-		return registration;
-	}
-	
-	public void setRegistration(ObservableList<BookInstance> registration) {
-		this.registration = registration;
-	}
-	
-	public void alertError(String mess) {
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Error Dialog");
-		alert.setHeaderText("Error");
-		alert.setContentText(mess);
-		alert.showAndWait();
-	}
-	
-	public void saveRegistration() throws SQLException {
-		//
-		if(registration.size() == 0) {
-			System.out.println("no book in registration!");
-			return;
-		}
-		String insert_registration = "insert into borrowregistration (card_id, status) value (?, ?)";
-		// status == 1: librarian confirmed, status == 0: new
-		String insert_items = "insert into borrowingregistrationitem (copy_id, card_id, registration_id, borrow_date, returned)"
-				+ "value (?,?,?,?,?)";
-		String getRegistrationID = "select * from borrowregistration where card_id=? and status=?";
-		
-		ps = conn.prepareStatement(insert_registration);
-		ps.setString(1, BorrowerController.getInstance().getCard_id());
-		ps.setString(2, "0");
-		int result = ps.executeUpdate();
-		if(result == 0) {
-			alertError("SQL Error!");
-		}
-		
-		// update copy status -> get copy_id, change copy status // status: available, borrowed, lent
-		BookManagerController bc = BookManagerController.getInstance();
-		
-		// get registration_id (after insert to borrowregistration)
-		String registration_id;
-		ps = conn.prepareStatement(getRegistrationID);
-		ps.setString(1, BorrowerController.getInstance().getCard_id());
-		ps.setString(2, "0");
-		ResultSet rs = ps.executeQuery();
-		rs.next();
-		registration_id = rs.getString(rs.findColumn("registration_id"));
-		
-		// get borrow_date (today)
-		String borrow_date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-		
-		// get card_id
-		String card_id = BorrowerController.getInstance().getCard_id();
-		
-		// update registration item 
-		ps = conn.prepareStatement(insert_items);
-		for(int i = 0; i < registration.size(); i++) {
-			String book_id = registration.get(i).getBook_id();
-			String copy_id = bc.getCopyID(book_id);
-			bc.updateCopyStatus(copy_id, "borrowed");
-			ps.setString(1, copy_id);
-			ps.setString(2, card_id);
-			ps.setString(3, registration_id);
-			ps.setString(4, borrow_date);
-			ps.setString(5, "0");
-			ps.executeUpdate();
-		}
-		//
-		
-	}
+    public void setRegistration(ObservableList<Book> registration) {
+            this.registration = registration;
+    }
+    public void clearRegistration() {
+            this.registration.clear();
+    }
+
+    /**
+     * luu cac yeu cau muon sach
+     * @throws  SQLException
+     * @return true neu save dc
+     */
+    public ViewAbstract saveRegistration() throws SQLException {
+        
+        // update copy status -> get copy_id, change copy status // status: available, borrowed, lent
+        int card_id=currentUser.getCard_id();
+        borrowRegistrationManager.saveRegistration(card_id);
+        int regist=borrowRegistrationManager.getRegistrationId(card_id);
+        CopyManager copy_manager=new CopyManager();
+        for(int i = 0; i < registration.size(); i++) {
+                int book_id = registration.get(i).getBook_id();
+                int copy_id = copy_manager.getValidCopyID(book_id);
+                 borrowRegistrationManager.updateCopytoBorrowed(copy_id);
+                 boolean check= borrowRegistrationManager.addItemtoBorrow(copy_id, card_id, regist);
+                if(check==false)
+                    return null;
+        }
+        getRegistration().clear();
+        return new HistoryView();
+    }
+    
+    public String checkRequest() throws SQLException{
+        if(currentUser.checkUnConfirmRegistration())
+            return "You have 1 registration waiting to be confirmed";
+         else if(currentUser.getCard_id() == -1)
+            return "You must have aleast 1 activated Borrow Card";
+        if(currentUser.getUnReturnBook() + getRegistration().size() > 5)
+            return "You have" + currentUser.getUnReturnBook() + " unreturned book." + "\n" + "You can only borrow 5 books at a time. Please return some book before borrow.";
+        if(currentUser.haveOutdatedBook())
+            return "Please return all your outdated book first";
+        if(getRegistration().isEmpty())
+            return "Please true some book first";
+        else return "success";
+    }
+    
 }

@@ -8,7 +8,7 @@
 
 <fx:root prefHeight="600.0" prefWidth="800.0" type="AnchorPane"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="BookManager.Controller.DisplayController">
+	fx:controller="BookManager.Boundary.DisplayView">
 	<children>
 		<Pane layoutX="6.0" layoutY="102.0" prefHeight="175.0" prefWidth="747.0">
 			<children>

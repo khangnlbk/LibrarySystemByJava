@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BorrowingManager.Controller.BorrowerRegistrationPaneController">
+<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <TableView fx:id="bookTable" prefHeight="449.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="booksTable" prefHeight="449.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="bookidCol" prefWidth="75.0" text="Book ID" />
           <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
@@ -25,7 +25,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="46.0" prefWidth="800.0">
          <children>
-            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#sendRegistration" text="Confirm" BorderPane.alignment="CENTER" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" text="Confirm" BorderPane.alignment="CENTER" />
          </children>
       </HBox>
    </bottom>

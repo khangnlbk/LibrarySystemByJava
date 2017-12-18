@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <center>
+      <TableView fx:id="registTable" prefHeight="449.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+<!--         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>-->
+         <columns>
+            <TableColumn fx:id="copyidCol" prefWidth="75.0" text="Copy ID" />
+            <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="borrowdateCol" prefWidth="75.0" text="Borrow Date" />
+            <TableColumn fx:id="lentdateCol" prefWidth="75.0" text="Lent Date" />
+            <TableColumn fx:id="returndateCol" prefWidth="75.0" text="Return Date" />
+            <TableColumn fx:id="statusCol" prefWidth="75.0" text="Status" />
+         </columns>
+      </TableView>
+   </center>
+</BorderPane>

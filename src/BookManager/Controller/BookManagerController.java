@@ -1,69 +1,97 @@
 package BookManager.Controller;
 
+import BookManager.Boundary.AddNewCopyView;
+import BookManager.Boundary.BrowseCopyPaneView;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import BookManager.Book;
-import BookManager.CategoryBook;
-import BookManager.Copy;
-import BookManager.Controller.SearchAdvanceController.SearchFilter;
-import TableProperty.BookInstance;
-import TableProperty.CopyInstance;
+import BookManager.Entity.BookManager;
+import BookManager.Entity.Category;
+import BookManager.Entity.CategoryBook;
+import BookManager.Entity.CategoryManager;
+import BookManager.Entity.CopyManager;
+import Helper.ViewAbstract;
+import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 /**
- * Mediator của package BookManager. Truy xuất dữ liệu của Book, Copy, BookCategory, ...
+ * Mediator của package BookManager. Truy xuất dữ liệu của BookManager, CopyManager, BookCategory, ...
  * @author anonymous588
  *
  */
 public class BookManagerController {
 	
-	private static BookManagerController instance = null;
-	private BookManagerController() {}
-	public static BookManagerController getInstance() {
-		if(instance == null) {
-			instance = new BookManagerController();
-		}
-		return instance;
-	}
+//	private static BookManagerController instance = null;
+	public BookManagerController() {}
+
+    /**
+     *
+     * @return
+     */
+//    public static BookManagerController getInstance() {
+//		if(instance == null) {
+//			instance = new BookManagerController();
+//		}
+//		return instance;
+//	}
 	
-	private Book b = new Book();
-	private Copy c = new Copy();
+	private BookManager b = new BookManager();
+	private CopyManager c = new CopyManager();
+        private CategoryManager cat = new CategoryManager();
 	private CategoryBook cb = new CategoryBook();
 	
-	private BookInstance update_book = null;
-	private CopyInstance update_copy = null;
+        /**
+         * Add book to database (table Book)
+         * @param title
+         * @param author
+         * @param publisher
+         * @param isbn
+         * @param bookNumber
+         * @param discription
+         * @param price
+         * @throws ClassNotFoundException
+         * @throws SQLException 
+         */
+	public ViewAbstract addBook(String title, String author, String publisher, String isbn, String bookNumber, String discription, int price,ArrayList<Integer> categories) throws ClassNotFoundException, SQLException {
+            b.addBook(title, author, publisher, isbn, bookNumber,discription, price);               
+            ResultSet rs = b.searchBookByBookNumber(bookNumber);
+            rs.next();
+            for(int v: categories){
+                addCategoryBook(rs.getInt(rs.findColumn("book_id")),v);
+            }
+            AddNewCopyView view= new AddNewCopyView();
+            view.set_bookNumber(bookNumber);
+            return view;
+            
+	}
 	
-	public CopyInstance getUpdate_copy() {
-		return update_copy;
-	}
-	public void setUpdate_copy(CopyInstance update_copy) {
-		this.update_copy = update_copy;
-	}
-	public BookInstance getUpdate_book() {
-		return update_book;
-	}
-	public void setUpdate_book(BookInstance update_book) {
-		this.update_book = update_book;
-	}
-	
-	public void addBook(String title, String author, String publisher, String isbn, String bookNumber, String discription, String price) throws ClassNotFoundException, SQLException {
-		b.addBook(title, author, publisher, isbn, bookNumber,discription, price);
-	}
-	
-	public void addCategoryBook(String book_id, String category_id) throws SQLException {
+        /**
+         * Add book and category to database (table CategoryBook)
+         * @param book_id
+         * @param category_id
+         * @throws SQLException 
+         */
+	public void addCategoryBook(int book_id, int category_id) throws SQLException {
 		cb.addCategoryBook(book_id, category_id);
 	}
 	
-	public ResultSet getCategories(String book_id) throws SQLException {
+        /**
+         * Get all category by book id
+         * @param book_id
+         * @return ResultSet category list
+         * @throws SQLException 
+         */
+	public ResultSet getCategories(int book_id) throws SQLException {
 		return b.getCategoryByBookId(book_id);
 	}
 	
-	public ResultSet getAllBook() throws SQLException {
-		return b.getAllBook();
-	}
 	
 	// get quantity of that category +1, type == 0: categoryID, type == 1: category Name, type == 2: category encode
+        /**
+         * Get quantity of that category, then plus 1 to take new book sequence
+         * @param encode
+         * @return new book sequence
+         */
 	public int getNewBookSequence(String encode) {
 		try {
 			return b.getBookCountInCategory(encode) + 1;
@@ -75,7 +103,13 @@ public class BookManagerController {
 	}
 	
 	//get quantity of book's copies.
-	public int getCountOfCopy(String book_id) {
+
+    /**
+     *
+     * @param book_id
+     * @return
+     */
+	public int getCountOfCopy(int book_id) {
 		try {
 			return c.getCountOfCopy(book_id);
 		} catch (SQLException e) {
@@ -84,37 +118,14 @@ public class BookManagerController {
 		}
 		return 0;
 	}
+
 	
-	public ResultSet searchBook(String arg0, String type) throws SQLException {
-		if(type.equals("book_id")) {
-			System.out.println("search by id");
-			return b.searchBookById(arg0);
-		}
-		if(type.equals("isbn")) {
-			System.out.println("search by isbn");
-			return b.searchBookByISBN(arg0);
-		}
-		if(type.equals("title")) {
-			System.out.println("search by title");
-			return b.searchBookByTitle(arg0);
-		}
-		if(type.equals("author")) {
-			System.out.println("search by author");
-			return b.searchBookByAuthor(arg0);
-		}
-		if(type.equals("publisher")) {
-			System.out.println("search by publisher");
-			return b.searchBookByPublisher(arg0);
-		}
-		if(type.equals("book_number")) {
-			System.out.println("search by book_number");
-			return b.searchBookByBookNumber(arg0);
-		}
-		
-		return null;
-	}
-	
-	public boolean isBorrowalbe(String book_id) {
+    /**
+     *
+     * @param book_id
+     * @return
+     */
+    public boolean isBorrowalbe(int book_id) {
 		try {
 			return c.isBorrowable(book_id);
 		} catch (SQLException e) {
@@ -124,7 +135,16 @@ public class BookManagerController {
 		return false;
 	}
 	
-	public void addNewCopy(String book_id, String copy_number, String status, String price, String condition, String copy_type) {
+    /**
+     *
+     * @param book_id
+     * @param copy_number
+     * @param status
+     * @param price
+     * @param condition
+     * @param copy_type
+     */
+    public void addNewCopy(int book_id, String copy_number, String status, int price, String condition, String copy_type) {
 		try {
 			c.addCopy(book_id, copy_number, status, price, condition, copy_type);
 		} catch (SQLException e) {
@@ -133,26 +153,38 @@ public class BookManagerController {
 		}
 	}
 	
-	public ResultSet SearchBookAdvance(SearchFilter filter) throws SQLException {
-		return b.SearchAdvanceBook(filter);
-	}
-
-	public ResultSet GetBookByBookID(int bookID) throws Exception {
+    /**
+     *
+     * @param bookID
+     * @return
+     * @throws Exception
+     */
+    public ResultSet GetBookByBookID(int bookID) throws Exception {
 		// TODO Auto-generated method stub
 		return b.GetBookByBookId(bookID);
 	}
 	
-	public String getCopyID(String book_id) {
+    /**
+     *
+     * @param book_id
+     * @return
+     */
+    public int getCopyID(int book_id) {
 		try {
 			return c.getCopyID(book_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return -1;
 	}
 
-	public void updateCopyStatus(String copy_id, String status) {
+    /**
+     *
+     * @param copy_id
+     * @param status
+     */
+    public void updateCopyStatus(int copy_id, String status) {
 		try {
 			c.updateCopyStatus(copy_id, status);
 		} catch (SQLException e) {
@@ -161,7 +193,11 @@ public class BookManagerController {
 		}
 	}
 	
-	public void deleteBookCategory(String book_id) {
+    /**
+     *
+     * @param book_id
+     */
+    public void deleteBookCategory(int book_id) {
 		try {
 			cb.deleteBookCategory(book_id);
 		} catch (SQLException e) {
@@ -170,19 +206,12 @@ public class BookManagerController {
 		}
 	}
 	
-	public void updateBook(String book_id, String title, String author, String publisher, String isbn, String bookNumber, String discription, String price) {
-		try {
-			b.upateBook(book_id, title, author, publisher, isbn, bookNumber, discription, price);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void updateCopyNumber(String book_id, String new_book_number) {
+    /**
+     *
+     * @param book_id
+     * @param new_book_number
+     */
+    public void updateCopyNumber(int book_id, String new_book_number) {
 		try {
 			c.updateCopyNumber(book_id, new_book_number);
 		} catch (SQLException e) {
@@ -191,13 +220,20 @@ public class BookManagerController {
 		}
 	}
 	
-	public void setBrowseCopyPaneInfor(String book_id) {
-		BrowseCopyPaneController.setBook_id(book_id);
-	}
+//    /**
+//     *
+//     * @param book_id
+//     */
+//    public void setBrowseCopyPaneInfor(int book_id) {
+//		BrowseCopyPaneView.setBook_id(book_id);
+//	}
 	
-	
-	
-	public ResultSet getCopy(String book_id) {
+    /**
+     *
+     * @param book_id
+     * @return
+     */
+    public ResultSet getCopy(int book_id) {
 		try {
 			return c.getCopy(book_id);
 		} catch (SQLException e) {
@@ -206,14 +242,17 @@ public class BookManagerController {
 		}
 		return null;
 	}
-	
-	public void updateCopy(String status, String price, String copy_condition, String copy_type) {
-		try {
-			c.updateCopy(update_copy.getCopy_id(), status, price, copy_condition, copy_type);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    
+            /**
+         * Get all book
+         * @return ResultSet book list
+         * @throws SQLException 
+         */
+	public ResultSet getAllBook() throws SQLException {
+		return b.getAllBook();
 	}
-	
+	    
+        public ResultSet getAllCatalog() throws SQLException {
+            return cat.getAllCategory();
+        }
 }

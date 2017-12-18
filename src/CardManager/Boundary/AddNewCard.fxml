@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<center>
+		<Pane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+			<children>
+				<BorderPane prefHeight="552.0" prefWidth="800.0">
+					<top>
+						<Label prefHeight="67.0" prefWidth="232.0" text="Add New Card" textAlignment="CENTER" BorderPane.alignment="CENTER">
+							<font>
+								<Font name="System Bold" size="28.0" />
+							</font>
+						</Label>
+					</top>
+					<center>
+						<GridPane alignment="CENTER" prefHeight="486.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+									<children>
+										<Label text="Card Id" textAlignment="CENTER">
+											<font>
+												<Font name="System Bold" size="24.0" />
+											</font>
+                                 <HBox.margin>
+                                    <Insets right="70.0" />
+                                 </HBox.margin>
+										</Label>
+										<TextField fx:id="cardId" prefHeight="25.0" prefWidth="215.0" />
+									</children>
+                           <GridPane.margin>
+                              <Insets bottom="30.0" />
+                           </GridPane.margin>
+								</HBox>
+								<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+									<children>
+										<Label text="Activate Code" textAlignment="CENTER">
+											<font>
+												<Font name="System Bold" size="24.0" />
+											</font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+										</Label>
+										<TextField fx:id="activate" prefHeight="25.0" prefWidth="215.0" />
+									</children>
+                           <GridPane.margin>
+                              <Insets bottom="60.0" top="60.0" />
+                           </GridPane.margin>
+								</HBox>
+								<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+									<children>
+										<Label text="Expired Date" textAlignment="CENTER">
+											<font>
+												<Font name="System Bold" size="24.0" />
+											</font>
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+										</Label>
+                              <DatePicker fx:id="date" />
+									</children>
+                           <GridPane.margin>
+                              <Insets bottom="30.0" top="30.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets top="60.0" />
+                           </padding>
+								</HBox>
+								<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+									<children>
+										<Label text="Deposit" textAlignment="CENTER">
+											<font>
+												<Font name="System Bold" size="24.0" />
+											</font>
+                                 <HBox.margin>
+                                    <Insets right="50.0" />
+                                 </HBox.margin>
+										</Label>
+										<TextField fx:id="deposit" prefHeight="25.0" prefWidth="215.0" />
+									</children>
+								</HBox>
+							</children>
+						</GridPane>
+					</center>
+					<bottom>
+						<Button fx:id="submitButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="83.0" text="Submit" BorderPane.alignment="CENTER" />
+					</bottom>
+				</BorderPane>
+			</children>
+		</Pane>
+	</center>
+</BorderPane>

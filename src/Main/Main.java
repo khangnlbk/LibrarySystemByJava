@@ -1,17 +1,7 @@
 package Main;
 
-import java.io.IOException;
-import java.util.Calendar;
-
-import BorrowingManager.Controller.LibrarianBorrowingRegistrationPaneController;
-import UserManager.Controller.BorrowerViewController;
-import UserManager.Controller.LibrarianViewController;
-import UserManager.Controller.LoginController;
+import UserManager.Boundary.LoginView;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -29,9 +19,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Main.primaryStage = primaryStage;
-		Main.primaryStage.setTitle("Library System");
-		LoginController lc = new LoginController();
+		LoginView lc = new LoginView();
 		
 		try {
 			lc.start(primaryStage);
@@ -41,9 +29,11 @@ public class Main extends Application {
 		}
 	}
 	
-
-	
-	public static void main(String[] args) {
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
 		launch(args);
 	}
 }

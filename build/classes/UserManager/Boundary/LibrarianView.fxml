@@ -7,28 +7,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Controller.LibrarianViewController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Boundary.LibrarianView">
 	<top>
 		<HBox alignment="CENTER" prefHeight="19.0" prefWidth="779.0" BorderPane.alignment="CENTER">
 			<children>
             <HBox prefHeight="25.0" prefWidth="1212.0">
                <children>
-      				<MenuBar prefHeight="25.0" prefWidth="642.0">
+      				<MenuBar prefHeight="25.0" prefWidth="642.0" fx:id="bar">
       					<menus>
       						<Menu mnemonicParsing="false" text="Add New">
       							<items>
-      								<MenuItem mnemonicParsing="false" onAction="#showAddNewBook" text="Add New Book" />
-      								<MenuItem mnemonicParsing="false" onAction="#showAddNewCopy" text="Add New Copy" />
+      								<MenuItem fx:id="add_book" mnemonicParsing="false" text="Add New Book" />
+      								<MenuItem fx:id= "add_copy" mnemonicParsing="false" text="Add New Copy" />
       							</items>
       						</Menu>
-      						<Menu mnemonicParsing="false" text="Borrowing Management">
+      						<Menu mnemonicParsing="false"  text="Borrowing Management">
       							<items>
-      								<MenuItem mnemonicParsing="false" onAction="#showRegistrationPane" text="Borrowing Registration" />
-      							</items>
-      						</Menu>
-      						<Menu mnemonicParsing="false" text="Search Advance">
-      							<items>
-      								<MenuItem mnemonicParsing="false" onAction="#SearchAdvance_Click" text="Search Advance" />
+                              <MenuItem mnemonicParsing="false" fx:id= "card_manage" text="Card Management" />
+      								<MenuItem mnemonicParsing="false" fx:id= "borrow_manage" text="Borrowing Registration" />
       							</items>
       						</Menu>
       					</menus>
@@ -37,7 +33,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="747.0">
                <children>
-      				<Button fx:id="homeButton" mnemonicParsing="false" onAction="#showLibrarianView" prefHeight="25.0" prefWidth="77.0" text="Home">
+      				<Button  mnemonicParsing="false" fx:id= "search" prefHeight="25.0" prefWidth="77.0" text="Home">
       					<HBox.margin>
       						<Insets left="1.0" right="1.0" />
       					</HBox.margin>

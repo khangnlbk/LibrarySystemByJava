@@ -1,0 +1,10 @@
+BookManager.Controller
+BookManager.Entity
+BorrowingManager.Controller
+BorrowingManager.Entity
+CardManager.Controller
+CardManager.Entity
+Helper
+Main
+UserManager.Controller
+UserManager.Entity

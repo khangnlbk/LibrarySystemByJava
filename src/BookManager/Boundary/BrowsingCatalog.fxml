@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER">
+         <children>
+            <ComboBox fx:id="optionBox" prefHeight="39.0" prefWidth="135.0" promptText="type">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></ComboBox>
+            <ComboBox fx:id="catalogBox" prefHeight="39.0" prefWidth="308.0" >
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </ComboBox>
+<!--            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchBook" text="Search" />-->
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+        <fx:include fx:id="display" source="BooksDisplay.fxml" />
+   </bottom>
+</BorderPane>

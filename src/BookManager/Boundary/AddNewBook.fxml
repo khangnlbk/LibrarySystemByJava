@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BookManager.Controller.AddNewBookController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<center>
 		<Pane prefHeight="535.0" prefWidth="800.0" BorderPane.alignment="CENTER">
 			<children>
 				<BorderPane prefHeight="535.0" prefWidth="800.0">
 					<top>
-						<Label fx:id="window_label" prefHeight="67.0" prefWidth="198.0" text="Add New Book" textAlignment="CENTER" BorderPane.alignment="CENTER">
+						<Label fx:id="window_label" prefHeight="67.0" prefWidth="234.0" text="Add New Book" textAlignment="CENTER" BorderPane.alignment="CENTER">
 							<font>
 								<Font name="System Bold" size="28.0" />
 							</font>
@@ -30,8 +31,8 @@
 								<RowConstraints maxHeight="110.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
 								<RowConstraints maxHeight="160.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
 								<RowConstraints maxHeight="207.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="155.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="211.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="155.0" minHeight="25.0" prefHeight="35.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
 								<RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
@@ -123,7 +124,16 @@
 								</HBox>
 								<HBox alignment="CENTER" prefHeight="61.0" prefWidth="415.0" GridPane.columnSpan="2" GridPane.rowIndex="9">
 									<children>
-										<Button fx:id="submitButton" mnemonicParsing="false" onAction="#addBook" prefHeight="29.0" prefWidth="83.0" text="Submit" />
+										<Button fx:id="submitButton" mnemonicParsing="false" onAction="#addBook" prefHeight="29.0" prefWidth="83.0" text="Submit">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#cancelAdd" prefHeight="29.0" prefWidth="83.0" text="Cancel">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
 									</children>
 								</HBox>
 								<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">

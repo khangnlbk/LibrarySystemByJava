@@ -5,22 +5,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Controller.BorrowerViewController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManager.Boundary.BorrowerView">
    <top>
       <HBox>
          <children>
-            <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="649.0" BorderPane.alignment="CENTER">
+            <MenuBar fx:id="bar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="649.0" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="User">
+                <Menu mnemonicParsing="false" text="Home">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="User Profile" />
-                        <MenuItem mnemonicParsing="false" text="History" />
+                    <MenuItem mnemonicParsing="false" fx:id="search" text="Search" />
+                        <MenuItem mnemonicParsing="false" fx:id="browsing_catalog" text="Catalog" />
                   </items>
                 </Menu>
+                        <Menu mnemonicParsing="false" text="User">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="User Profile" />
+                              <MenuItem mnemonicParsing="false" fx:id="history" text="History" />
+                           </items>
+                        </Menu>
                 <Menu mnemonicParsing="false" text="Borrow Card">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#showCardInformation" text="Card Information" />
-                        <MenuItem mnemonicParsing="false" onAction="#showActivateCard" text="Activate Card" />
+                    <MenuItem mnemonicParsing="false" fx:id="card_jnfo"  text="Card Information" />
+                        <MenuItem mnemonicParsing="false" fx:id="activate" text="Activate Card" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Other">
@@ -33,8 +39,8 @@
             </MenuBar>
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="304.0">
                <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#showBrowseBookPane" prefHeight="25.0" prefWidth="64.0" text="Home" />
-                  <Button mnemonicParsing="false" onAction="#showRegistrationPane" prefHeight="25.0" prefWidth="86.0" text="Registration" />
+<!--                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#showBrowseBookPane" prefHeight="25.0" prefWidth="64.0" text="Home" />-->
+                  <Button mnemonicParsing="false" onAction="#showRegistrationPane" prefHeight="25.0" prefWidth="120.0" text="Registration" />
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="76.0" text="Logout" />
                </children>
             </HBox>
